@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tsabita Raysa Andra Putra | Informatics Engineering & Network Specialist</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --page-bg: #0b1220;
+      --surface: #111c2c;
+      --ink: #e6edf7;
+      --accent: #67e8f9;
+      --accent-soft: rgba(34, 211, 238, 0.12);
+      --line: #26364d;
+      --text-muted-custom: #b1bfd0;
+      --bs-info: #67e8f9;
+      --bs-info-rgb: 103, 232, 249;
+    }
+    body {
+      background-color: var(--page-bg);
+      color: var(--ink);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      scroll-behavior: smooth;
+      line-height: 1.65;
+    }
+    .navbar {
+      background-color: rgba(8, 14, 26, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    }
+    .portfolio-brand {
+      gap: 0.7rem;
+      margin-right: 0.5rem;
+      text-decoration: none;
+    }
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      place-items: center;
+      border: 1px solid rgba(103, 232, 249, 0.55);
+      border-radius: 12px;
+      background: linear-gradient(145deg, #0e7490, #1d4ed8);
+      box-shadow: 0 0 22px rgba(34, 211, 238, 0.18);
+      color: #ecfeff;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+    .brand-name {
+      color: var(--ink);
+      font-size: clamp(0.76rem, 2.4vw, 0.94rem);
+      letter-spacing: 0.02em;
+    }
+    .brand-tagline {
+      margin-top: 5px;
+      color: #9aacc2;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+    .portfolio-brand:hover .brand-mark {
+      border-color: var(--accent);
+      box-shadow: 0 0 26px rgba(34, 211, 238, 0.3);
+    }
+    .navbar .nav-link {
+      color: #c4d0df;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .navbar .nav-link:hover {
+      color: var(--accent);
+    }
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      padding: 145px 0 88px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse at 12% 18%, rgba(34, 211, 238, 0.12), transparent 34%),
+        linear-gradient(135deg, #0b1220 0%, #0f1b30 100%);
+    }
+    .profile-photo {
+      width: 224px;
+      height: 224px;
+      object-fit: cover;
+      border: 6px solid #172437;
+      box-shadow: 0 0 0 2px #38bdf8, 0 18px 42px rgba(0, 0, 0, 0.35);
+    }
+    .hero-section h1 {
+      color: var(--ink);
+      font-size: clamp(2.45rem, 5vw, 4rem);
+      letter-spacing: -0.045em;
+    }
+    .hero-section h2 {
+      max-width: 760px;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 600 !important;
+      line-height: 1.4;
+    }
+    .hero-section p {
+      max-width: 900px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .badge-tech {
+      background-color: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(103, 232, 249, 0.28);
+      font-weight: 500;
+      border-radius: 999px;
+    }
+    .card-custom {
+      color: var(--ink);
+      background-color: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-custom:hover {
+      transform: translateY(-3px);
+      border-color: #3b6478;
+      box-shadow: 0 16px 34px rgba(34, 211, 238, 0.08);
+    }
+    .card-custom h4,
+    .card-custom h5,
+    .card-custom h6 {
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .card-custom .text-light {
+      color: var(--ink) !important;
+    }
+    .card-custom ul {
+      line-height: 1.75;
+    }
+    .project-image-link {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background-color: #0b1220;
+    }
+    .project-image {
+      display: block;
+      width: 100%;
+      height: 230px;
+      object-fit: contain;
+      background-color: var(--surface);
+      transition: transform 0.25s ease;
+    }
+    .project-image-link:hover .project-image {
+      transform: scale(1.025);
+    }
+    .section-title {
+      border-left: 4px solid var(--accent);
+      padding-left: 14px;
+      margin-bottom: 2rem;
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+    }
+    section.py-5 {
+      padding-top: 5rem !important;
+      padding-bottom: 5rem !important;
+    }
+    section.border-top {
+      border-top-color: var(--line) !important;
+    }
+    .timeline-item {
+      border-left: 2px solid #304258;
+      padding-left: 22px;
+      padding-bottom: 28px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
+      width: 13px;
+      height: 13px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: -8px;
+      top: 5px;
+      box-shadow: 0 0 0 4px var(--page-bg), 0 0 14px rgba(103, 232, 249, 0.25);
+    }
+    .text-muted-custom {
+      color: var(--text-muted-custom) !important;
+    }
+    .text-info {
+      color: var(--accent) !important;
+    }
+    .bg-info {
+      background-color: #155e75 !important;
+    }
+    .bg-info.text-dark {
+      color: #cffafe !important;
+    }
+    .btn {
+      border-radius: 10px;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+    .btn-info {
+      --bs-btn-bg: #0e7490;
+      --bs-btn-color: #ffffff;
+      --bs-btn-border-color: #0e7490;
+      --bs-btn-hover-bg: #155e75;
+      --bs-btn-hover-color: #ffffff;
+      --bs-btn-hover-border-color: #155e75;
+      --bs-btn-active-bg: #164e63;
+      --bs-btn-active-color: #ffffff;
+      --bs-btn-active-border-color: #164e63;
+      --bs-btn-focus-shadow-rgb: 34, 211, 238;
+    }
+    .btn-outline-info {
+      --bs-btn-color: var(--accent);
+      --bs-btn-border-color: #38bdf8;
+      --bs-btn-hover-color: #ffffff;
+      --bs-btn-hover-bg: #0e7490;
+      --bs-btn-hover-border-color: #38bdf8;
+      --bs-btn-active-color: #ffffff;
+      --bs-btn-active-bg: #155e75;
+      --bs-btn-active-border-color: #38bdf8;
+      --bs-btn-focus-shadow-rgb: 34, 211, 238;
+    }
+    .btn-outline-light {
+      --bs-btn-color: #dbeafe;
+      --bs-btn-border-color: #7890ad;
+      --bs-btn-hover-color: #ffffff;
+      --bs-btn-hover-bg: #1e293b;
+      --bs-btn-hover-border-color: #a5bdd8;
+      --bs-btn-active-color: #ffffff;
+      --bs-btn-active-bg: #24364e;
+      --bs-btn-active-border-color: #a5bdd8;
+    }
+    .link-info {
+      color: #a5f3fc !important;
+    }
+    .link-info:hover {
+      color: #cffafe !important;
+    }
+    .btn-outline-success.text-light {
+      color: #86efac !important;
+      --bs-btn-border-color: #4ade80;
+      --bs-btn-hover-bg: #14532d;
+      --bs-btn-hover-border-color: #4ade80;
+    }
+    .btn-outline-success.text-light:hover {
+      color: #f0fdf4 !important;
+    }
+    .footer-social {
+      color: var(--text-muted-custom);
+    }
+    .footer-social .text-light {
+      color: var(--ink) !important;
+    }
+    @media (max-width: 767.98px) {
+      .hero-section {
+        padding: 120px 0 64px;
+      }
+      .profile-photo {
+        width: 176px;
+        height: 176px;
+      }
+      section.py-5 {
+        padding-top: 3.75rem !important;
+        padding-bottom: 3.75rem !important;
+      }
+      .project-image {
+        height: 200px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand portfolio-brand d-flex align-items-center" href="#" aria-label="Kembali ke bagian atas">
+        <span class="brand-mark">TR</span>
+        <span class="brand-copy">
+          <span class="brand-name fw-bold">Tsabita Raysa Andra Putra</span>
+          <span class="brand-tagline">NETWORK • DATA • ML</span>
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="#keahlian">Keahlian</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyek">Studi Kasus</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pengalaman">Pengalaman</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pendidikan">Pendidikan & Sertifikasi</a></li>
+          <li class="nav-item"><a class="nav-link btn btn-outline-info btn-sm px-3 ms-lg-2" href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-12 col-md-4 col-lg-3 text-center">
+          <a href="assets/foto-profil.jpg" target="_blank" rel="noopener" aria-label="Buka foto profil ukuran penuh">
+            <img src="assets/foto-profil.jpg" class="profile-photo img-fluid rounded-circle" alt="Foto profil Tsabita Raysa Andra Putra">
+          </a>
+        </div>
+        <div class="col-12 col-md-8 col-lg-9">
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="badge badge-tech px-3 py-2">MTCNA Certified (2026)</span>
+            <span class="badge badge-tech px-3 py-2">S1 Teknik Informatika ITPLN • IPK 3.75</span>
+          </div>
+          <h1 class="display-5 fw-bold mb-2">Tsabita Raysa Andra Putra</h1>
+          <h2 class="h4 text-info fw-normal mb-3">Informatics Engineering | Computer Networking, Data Processing &amp; Machine Learning</h2>
+          <p class="lead text-muted-custom mb-4">
+            Mahasiswa S1 Teknik Informatika Institut Teknologi PLN yang memiliki minat dan pengalaman di bidang teknologi informasi, khususnya jaringan komputer, pengolahan data, dan machine learning. Memiliki pengalaman praktik dalam instalasi dan troubleshooting jaringan, serta pengolahan dataset meteorologi menggunakan Python, Pandas, dan NumPy untuk mendukung kegiatan analisis dan pemodelan data. Aktif dalam organisasi kemahasiswaan dan memiliki pengalaman kepemimpinan sebagai Ketua Himpunan Mahasiswa Teknik Informatika, dengan kemampuan koordinasi tim, komunikasi, pemecahan masalah, serta manajemen kegiatan. Adaptif, teliti, dan memiliki semangat untuk terus mengembangkan kemampuan teknis maupun profesional.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#proyek" class="btn btn-info fw-semibold px-4">Lihat Studi Kasus</a>
+            <a href="assets/Portofolio%20Deck%20-%20Tsabita%20Raysa%20Andra%20Putra%20%281%29.pdf" class="btn btn-outline-info px-4" target="_blank" rel="noopener">
+              <i class="bi bi-file-earmark-pdf me-1"></i> Lihat Portofolio Deck
+            </a>
+            <a href="https://wa.me/6287873498944" class="btn btn-outline-success text-light px-3" target="_blank">
+              <i class="bi bi-whatsapp me-1"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Keahlian Teknis -->
+  <section id="keahlian" class="py-5">
+    <div class="container">
+      <h3 class="section-title fw-bold">Kompetensi Teknis</h3>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card card-custom h-100 p-4">
+            <div class="text-info fs-3 mb-2"><i class="bi bi-router"></i></div>
+            <h5 class="fw-bold">Jaringan Komputer &amp; Infrastruktur</h5>
+            <p class="text-muted-custom small mb-3">Instalasi, konfigurasi perangkat jaringan, simulasi topologi, dan pemeliharaan fisik maupun logis.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-tech">LAN / WLAN</span>
+              <span class="badge badge-tech">Router, Switch &amp; AP</span>
+              <span class="badge badge-tech">MikroTik (MTCNA)</span>
+              <span class="badge badge-tech">Cisco Packet Tracer</span>
+              <span class="badge badge-tech">Fiber Optik (ODP/ODC)</span>
+              <span class="badge badge-tech">Network Troubleshooting</span>
+              <span class="badge badge-tech">Firewall &amp; Enkripsi</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-custom h-100 p-4">
+            <div class="text-info fs-3 mb-2"><i class="bi bi-bar-chart-line"></i></div>
+            <h5 class="fw-bold">Pengolahan Data &amp; Machine Learning</h5>
+            <p class="text-muted-custom small mb-3">Pengolahan dataset meteorologi, pemodelan dampak cuaca, dan dukungan visualisasi spasial.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-tech">Python</span>
+              <span class="badge badge-tech">Pandas</span>
+              <span class="badge badge-tech">NumPy</span>
+              <span class="badge badge-tech">Impact-Based Forecasting (IBF)</span>
+              <span class="badge badge-tech">WebGIS</span>
+              <span class="badge badge-tech">Data Analytics</span>
+              <span class="badge badge-tech">Dasar Machine Learning</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-custom h-100 p-4">
+            <div class="text-info fs-3 mb-2"><i class="bi bi-people"></i></div>
+            <h5 class="fw-bold">Kepemimpinan &amp; Operasional</h5>
+            <p class="text-muted-custom small mb-3">Koordinasi lintas tim teknis maupun non-teknis, manajemen acara, dan komunikasi pelanggan.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-tech">Manajemen Tim</span>
+              <span class="badge badge-tech">Koordinasi Instalasi</span>
+              <span class="badge badge-tech">Customer Troubleshooting</span>
+              <span class="badge badge-tech">OBS Studio Operator</span>
+              <span class="badge badge-tech">Problem Solving</span>
+              <span class="badge badge-tech">Manajemen Waktu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studi Kasus Proyek -->
+  <section id="proyek" class="py-5 border-top border-secondary border-opacity-25">
+    <div class="container">
+      <h3 class="section-title fw-bold">Studi Kasus &amp; Pengalaman Praktik</h3>
+      <div class="row g-4">
+
+        <!-- Studi Kasus 1 -->
+        <div class="col-lg-6">
+          <div class="card card-custom h-100 p-4">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="badge bg-info text-dark">Network Engineering</span>
+              <small class="text-muted-custom">PT. Unggul Ejawantah Industry</small>
+            </div>
+            <h4 class="h5 fw-bold mb-3">Pemetaan Skema Kabel &amp; Pengukuran Redaman Fiber Optik (ODP/ODC)</h4>
+            <a href="assets/skema-odp-odc.png" class="project-image-link mb-3" target="_blank" rel="noopener" aria-label="Buka gambar skema jaringan ODP ODC">
+              <img src="assets/skema-odp-odc.png" class="project-image" alt="Skema Jaringan ODP ODC">
+            </a>
+            <ul class="small text-muted-custom ps-3 mb-3">
+              <li><strong class="text-light">Problem:</strong> Perlunya pemetaan jalur kabel lapangan yang akurat serta pemantauan kualitas sinyal optik agar instalasi dan pemeliharaan jaringan distribusi berjalan optimal.</li>
+              <li><strong class="text-light">Action:</strong> Melakukan pengecekan nilai redaman fiber optik pada perangkat ODP dan ODC, menggambar skema lapangan peletakan kabel jaringan dan ODP, serta mendukung proses instalasi dan pemeliharaan jaringan.</li>
+              <li><strong class="text-light">Result:</strong> Tersedianya dokumentasi jalur kabel distribusi yang terstruktur serta terdeteksinya titik anomali redaman untuk menjaga stabilitas koneksi jaringan.</li>
+            </ul>
+            <div class="mt-auto d-flex flex-wrap gap-1">
+              <span class="badge badge-tech">Fiber Optik</span>
+              <span class="badge badge-tech">ODP &amp; ODC</span>
+              <span class="badge badge-tech">Skema Jaringan</span>
+              <span class="badge badge-tech">Instalasi &amp; Maintenance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studi Kasus 2 -->
+        <div class="col-lg-6">
+          <div class="card card-custom h-100 p-4">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="badge bg-info text-dark">Data Processing &amp; ML</span>
+              <small class="text-muted-custom">BMKG (Agu – Nov 2026)</small>
+            </div>
+            <h4 class="h5 fw-bold mb-3">Pengolahan Dataset Meteorologi, Pemodelan IBF &amp; Dukungan WebGIS</h4>
+            <a href="assets/pipeline-ibf-webgis.png" class="project-image-link mb-3" target="_blank" rel="noopener" aria-label="Buka gambar alur data meteorologi dan WebGIS">
+              <img src="assets/pipeline-ibf-webgis.png" class="project-image" alt="Alur Data Meteorologi dan WebGIS">
+            </a>
+            <ul class="small text-muted-custom ps-3 mb-3">
+              <li><strong class="text-light">Problem:</strong> Kebutuhan pengolahan dataset meteorologi skala besar untuk mendukung prakiraan cuaca serta mengidentifikasi potensi dampak cuaca terhadap wilayah terdampak.</li>
+              <li><strong class="text-light">Action:</strong> Mengolah dan menganalisis dataset meteorologi menggunakan Python, Pandas, dan NumPy; berkontribusi dalam proyek identifikasi dampak cuaca dengan metode Impact-Based Forecasting (IBF); serta mendukung rencana visualisasi hasil proyek melalui platform WebGIS.</li>
+              <li><strong class="text-light">Result:</strong> Menghasilkan olahan data prakiraan berbasis dampak yang terstruktur dan siap diintegrasikan ke dalam tampilan peta interaktif WebGIS.</li>
+            </ul>
+            <div class="mt-auto d-flex flex-wrap gap-1">
+              <span class="badge badge-tech">Python</span>
+              <span class="badge badge-tech">Pandas &amp; NumPy</span>
+              <span class="badge badge-tech">IBF</span>
+              <span class="badge badge-tech">WebGIS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studi Kasus 3 -->
+        <div class="col-lg-6">
+          <div class="card card-custom h-100 p-4">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="badge bg-info text-dark">Service Operations &amp; Support</span>
+              <small class="text-muted-custom">PT Indonesia Comnets Plus (PLN Icon Plus)</small>
+            </div>
+            <h4 class="h5 fw-bold mb-3">Troubleshooting Layanan Pelanggan &amp; Koordinasi Instalasi Ritel</h4>
+            <a href="assets/alur-layanan-ritel.png" class="project-image-link mb-3" target="_blank" rel="noopener" aria-label="Buka gambar alur layanan pelanggan dan instalasi ritel">
+              <img src="assets/alur-layanan-ritel.png" class="project-image" alt="Alur Layanan Pelanggan dan Koordinasi Instalasi Ritel">
+            </a>
+            <ul class="small text-muted-custom ps-3 mb-3">
+              <li><strong class="text-light">Problem:</strong> Keluhan gangguan konektivitas tingkat awal dari pelanggan ritel dan kebutuhan koordinasi yang tepat antara administrasi pendaftaran baru dengan jadwal teknisi lapangan.</li>
+              <li><strong class="text-light">Action:</strong> Menangani keluhan pelanggan dengan memberikan solusi awal (troubleshooting ringan), membantu administrasi pendaftaran pelanggan baru, serta berkoordinasi dengan tim teknisi untuk penjadwalan instalasi.</li>
+              <li><strong class="text-light">Result:</strong> Mempercepat penyelesaian kendala ringan tanpa menunggu eskalasi teknis serta memastikan alur penjadwalan instalasi pelanggan baru berjalan tertib.</li>
+            </ul>
+            <div class="mt-auto d-flex flex-wrap gap-1">
+              <span class="badge badge-tech">Troubleshooting Ringan</span>
+              <span class="badge badge-tech">Koordinasi Teknisi</span>
+              <span class="badge badge-tech">Layanan Ritel ISP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studi Kasus 4 -->
+        <div class="col-lg-6">
+          <div class="card card-custom h-100 p-4">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="badge bg-info text-dark">Routing, Switching &amp; Security</span>
+              <small class="text-muted-custom">MTCNA (2026)</small>
+            </div>
+            <h4 class="h5 fw-bold mb-3">Simulasi Topologi Jaringan, Konfigurasi Perangkat &amp; Keamanan Dasar</h4>
+            <a href="assets/topologi-cisco-mikrotik.png" class="project-image-link mb-3" target="_blank" rel="noopener" aria-label="Buka gambar topologi Cisco dan MikroTik">
+              <img src="assets/topologi-cisco-mikrotik.png" class="project-image" alt="Topologi Jaringan Cisco dan MikroTik">
+            </a>
+            <ul class="small text-muted-custom ps-3 mb-3">
+              <li><strong class="text-light">Problem:</strong> Kebutuhan perancangan arsitektur jaringan LAN/WLAN yang terstruktur dan terlindungi sebelum diterapkan pada lingkungan produksi.</li>
+              <li><strong class="text-light">Action:</strong> Merancang dan menguji topologi jaringan melalui Cisco Packet Tracer, melakukan konfigurasi Router, Switch, dan Access Point, serta menerapkan kebijakan keamanan dasar (Firewall, Antivirus, dan Enkripsi).</li>
+              <li><strong class="text-light">Result:</strong> Tervalidasinya penguasaan standar konfigurasi jaringan dan pemecahan masalah melalui simulasi topologi, konfigurasi perangkat, dan sertifikasi MikroTik MTCNA (2026).</li>
+            </ul>
+            <div class="mt-auto d-flex flex-wrap gap-1">
+              <span class="badge badge-tech">Cisco Packet Tracer</span>
+              <span class="badge badge-tech">Router &amp; Switch</span>
+              <span class="badge badge-tech">Firewall &amp; Enkripsi</span>
+              <span class="badge badge-tech">MTCNA</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pengalaman Kerja & Organisasi -->
+  <section id="pengalaman" class="py-5 border-top border-secondary border-opacity-25">
+    <div class="container">
+      <h3 class="section-title fw-bold">Pengalaman Kerja &amp; Kepemimpinan</h3>
+      <div class="row g-5">
+        <div class="col-lg-7">
+          <h5 class="text-info mb-4">Pengalaman Magang &amp; Kepemimpinan Utama</h5>
+          <div class="timeline-item">
+            <span class="text-info small fw-semibold">Agustus 2026 – November 2026</span>
+            <h5 class="fw-bold mb-1">Machine Learning / Data Processing Intern — BMKG</h5>
+            <p class="text-muted-custom small mb-0">Mengolah dataset meteorologi menggunakan Python, Pandas, dan NumPy untuk prakiraan cuaca, berkontribusi dalam proyek identifikasi dampak cuaca metode IBF, serta mendukung rencana visualisasi melalui platform WebGIS.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="text-info small fw-semibold">Februari 2026</span>
+            <h5 class="fw-bold mb-1">Retail Intern — PT Indonesia Comnets Plus (PLN Icon Plus)</h5>
+            <p class="text-muted-custom small mb-0">Membantu administrasi pendaftaran pelanggan baru, menangani keluhan pelanggan dengan troubleshooting ringan, serta berkoordinasi dengan tim teknisi untuk penjadwalan instalasi.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="text-info small fw-semibold">2025 – 2026</span>
+            <h5 class="fw-bold mb-1">Ketua Himpunan Mahasiswa Teknik Informatika — Institut Teknologi PLN</h5>
+            <p class="text-muted-custom small mb-0">Memimpin dan mengoordinasikan seluruh kegiatan himpunan, menyusun serta mengawasi program kerja, menjadi penghubung mahasiswa-pengurus-fakultas, serta mengembangkan SDM dan kerja sama internal maupun eksternal.</p>
+          </div>
+          <div class="timeline-item pb-0">
+            <span class="text-info small fw-semibold">Februari 2022 – Juni 2022</span>
+            <h5 class="fw-bold mb-1">Network Engineering Intern — PT. Unggul Ejawantah Industry</h5>
+            <p class="text-muted-custom small mb-0">Melakukan pengecekan redaman fiber optik pada ODP dan ODC, menggambar skema lapangan peletakan kabel jaringan dan ODP, serta membantu instalasi dan pemeliharaan jaringan.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <h5 class="text-info mb-4">Kepanitiaan &amp; Pelatihan (2024 – 2025)</h5>
+          <div class="card card-custom p-4 mb-3">
+            <h6 class="fw-bold text-light mb-3">Pengalaman Kepanitiaan</h6>
+            <ul class="small text-muted-custom ps-3 mb-0">
+              <li class="mb-2"><strong class="text-light">LKMM Pra-TD FTEN x FTIK Energize (2025):</strong> Staff Acara &amp; MC nonformal.</li>
+              <li class="mb-2"><strong class="text-light">FUNTASTIC (2024):</strong> Koordinator Perlombaan &amp; Staff Operator perangkat lunak OBS.</li>
+              <li class="mb-2"><strong class="text-light">Seminar Nasional FTEN (2024):</strong> Staff Acara.</li>
+              <li class="mb-2"><strong class="text-light">Karisma Santulitam (2024):</strong> Co-Fasilitator Mobile orientasi mahasiswa baru.</li>
+              <li class="mb-2"><strong class="text-light">Pelita #7 (2024):</strong> Divisi PSDM (pengelolaan data mahasiswa angkatan 2023).</li>
+              <li><strong class="text-light">Bakti Sosial FTEN (2024):</strong> Staff Acara &amp; MC formal.</li>
+            </ul>
+          </div>
+          <div class="card card-custom p-4">
+            <h6 class="fw-bold text-light mb-3">Pelatihan Kepemimpinan</h6>
+            <ul class="small text-muted-custom ps-3 mb-0">
+              <li class="mb-1">Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar (LKMM TD) — 2025</li>
+              <li class="mb-1">Latihan Keterampilan Manajemen Mahasiswa Pra-Tingkat Dasar (LKMM Pra-TD) — 2024</li>
+              <li>Latihan Dasar Kepemimpinan Mahasiswa (LDKM HIMAKA) — 2024</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pendidikan & Sertifikasi -->
+  <section id="pendidikan" class="py-5 border-top border-secondary border-opacity-25">
+    <div class="container">
+      <h3 class="section-title fw-bold">Pendidikan &amp; Sertifikasi</h3>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card card-custom h-100 p-4">
+            <h5 class="fw-bold text-info mb-3"><i class="bi bi-mortarboard me-2"></i>Riwayat Pendidikan</h5>
+            <div class="mb-3">
+              <h6 class="fw-bold mb-0">Institut Teknologi PLN</h6>
+              <small class="text-info">S1 Teknik Informatika | 2023 – Sekarang • IPK 3.75</small>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-0">SMKN 2 Depok</h6>
+              <small class="text-muted-custom">Teknik Komputer dan Jaringan | 2020 – 2023</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card card-custom h-100 p-4">
+            <h5 class="fw-bold text-info mb-3"><i class="bi bi-patch-check me-2"></i>Sertifikasi Kompetensi</h5>
+            <ul class="small text-muted-custom ps-3 mb-0">
+              <li class="mb-2"><a class="link-info" href="assets/sertifikat-mtcna.pdf" target="_blank" rel="noopener">MikroTik Certified Network Associate (MTCNA)</a> — 2026</li>
+              <li><a class="link-info" href="assets/sertifikat-bees.pdf" target="_blank" rel="noopener">BEES</a> — 2024</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontak -->
+  <footer id="kontak" class="py-5 border-top border-secondary border-opacity-25 text-center">
+    <div class="container">
+      <h4 class="fw-bold mb-2">Hubungi Saya</h4>
+      <p class="text-muted-custom mb-4">Terbuka untuk peluang kerja di bidang Network Engineering, IT Infrastructure, maupun Data Processing.</p>
+      <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
+        <a href="mailto:andraputra121204@gmail.com" class="btn btn-info fw-semibold px-4">
+          <i class="bi bi-envelope me-1"></i> andraputra121204@gmail.com
+        </a>
+        <a href="mailto:tsabita2331031@itpln.ac.id" class="btn btn-outline-light px-4">
+          <i class="bi bi-envelope-at me-1"></i> tsabita2331031@itpln.ac.id
+        </a>
+        <a href="https://wa.me/6287873498944" class="btn btn-outline-success text-light px-4" target="_blank">
+          <i class="bi bi-whatsapp me-1"></i> +62 878-7349-8944
+        </a>
+        <a href="https://www.linkedin.com/in/tsabita-raysa-andra-putra-b28367286/" class="btn btn-outline-info px-4" target="_blank" rel="noopener">
+          <i class="bi bi-linkedin me-1"></i> LinkedIn
+        </a>
+      </div>
+      <div class="footer-social small mb-3">
+        Instagram: <span class="text-light">@andraputraaaa</span> &nbsp;•&nbsp; LINE: <span class="text-light">@andra121204</span>
+      </div>
+      <small class="text-muted-custom">© 2026 Tsabita Raysa Andra Putra • Teknik Informatika, Institut Teknologi PLN</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
